@@ -65,11 +65,8 @@ function App() {
         </button>
 
         <Header />
-        <Main posts={searchedPosts} onAddPost={handleAddPost} />
-        <Archive
-          onAddPost={handleAddPost}
-          onCreateRandomPost={createRandomPost}
-        />
+        <Main />
+        <Archive onCreateRandomPost={createRandomPost} />
         <Footer />
       </section>
     </PostContext.Provider>
