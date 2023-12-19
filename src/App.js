@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { faker } from '@faker-js/faker';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Main from './components/Main';
+import Archive from './components/Archive';
 
 function createRandomPost() {
   return {
