@@ -1,9 +1,9 @@
 import { createContext, useState } from 'react';
-import { createRandomPost } from '../utils/createRandomPost';
+import createRandomPost from '../utils/createRandomPost';
 
-export const PostContext = createContext();
+const PostContext = createContext();
 
-function PostProvider() {
+function PostProvider({ children }) {
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
   );
@@ -26,4 +26,20 @@ function PostProvider() {
   function handleClearPosts() {
     setPosts([]);
   }
+
+  return (
+    <PostContext.Provider
+      value={{
+        posts: searchedPosts,
+        onAddPost: handleAddPost,
+        onClearPosts: handleClearPosts,
+        searchQuery,
+        setSearchQuery,
+      }}
+    >
+      {children}
+    </PostContext.Provider>
+  );
 }
+
+export { PostProvider, PostContext };

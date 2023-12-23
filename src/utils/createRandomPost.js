@@ -1,8 +1,10 @@
 import { faker } from '@faker-js/faker';
 
-export function createRandomPost() {
+function createRandomPost() {
   return {
     title: `${faker.hacker.adjective()} ${faker.hacker.noun()}`,
     body: faker.hacker.phrase(),
   };
 }
+
+export default createRandomPost;

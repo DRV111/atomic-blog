@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { PostContext } from './context/PostContext';
+import { PostProvider, PostContext } from './context/PostContext';
 // import { faker } from '@faker-js/faker';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
 import Archive from './components/Archive';
-import { createRandomPost } from './utils/createRandomPost';
+import createRandomPost from './utils/createRandomPost';
 
 // function createRandomPost() {
 //   return {
@@ -25,29 +25,21 @@ function App() {
   );
 
   return (
-    <PostContext.Provider
-      value={{
-        posts: searchedPosts,
-        onAddPost: handleAddPost,
-        onClearPosts: handleClearPosts,
-        searchQuery,
-        setSearchQuery,
-      }}
-    >
-      <section>
-        <button
-          onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-          className="btn-fake-dark-mode"
-        >
-          {isFakeDark ? '☀️' : '🌙'}
-        </button>
+    <section>
+      <button
+        onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
+        className="btn-fake-dark-mode"
+      >
+        {isFakeDark ? '☀️' : '🌙'}
+      </button>
 
+      <PostProvider>
         <Header />
         <Main />
         <Archive onCreateRandomPost={createRandomPost} />
         <Footer />
-      </section>
-    </PostContext.Provider>
+      </PostProvider>
+    </section>
   );
 }
 
