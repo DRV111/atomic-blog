@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PostProvider, PostContext } from './context/PostContext';
+import { PostProvider, usePosts } from './context/PostContext';
 // import { faker } from '@faker-js/faker';
 import Header from './components/Header';
 import Footer from './components/Footer';
